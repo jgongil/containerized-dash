@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  app:
+    image: firstdash
+    command: "python ./app/app.py"
+    ports:
+      - 8050:8050
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      SA_USER: sa
+      SA_PASSWORD: Hola!123456
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    volumes:
+      - ./data:/var/opt/mssql/data
+    environment: 
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Hola!123456
